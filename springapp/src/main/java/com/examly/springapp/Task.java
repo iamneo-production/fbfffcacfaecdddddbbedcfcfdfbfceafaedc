@@ -1,24 +1,28 @@
 package com.examly.springapp;
-import javax.persistence.*;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ModelTask {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long taskId;
+    private Long id;
     private String taskHolderName;
     private String taskDate;
     private String taskName;
     private String taskStatus;
 
-    public int getTaskId() {
-        return taskId;
+    // Getters and Setters
+
+    public Long getId() {
+        return id;
     }
 
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTaskHolderName() {
