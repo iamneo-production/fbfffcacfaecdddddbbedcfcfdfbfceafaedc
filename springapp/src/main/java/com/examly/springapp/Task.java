@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long taskId;
     private String taskHolderName;
     private String taskDate;
     private String taskName;
@@ -17,12 +17,12 @@ public class Task {
 
     // Getters and Setters
 
-    public Long getId() {
-        return id;
+    public Long getTaskId() {
+        return taskId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
     }
 
     public String getTaskHolderName() {

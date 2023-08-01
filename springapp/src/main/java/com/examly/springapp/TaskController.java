@@ -2,7 +2,6 @@ package com.examly.springapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +21,8 @@ public class TaskController {
     }
 
     @GetMapping("/getTask")
-    public Optional<Task> getTaskById(@RequestParam Long id) {
-        return taskService.getTaskById(id);
+    public Optional<Task> getTaskById(@RequestParam Long taskId) {
+        return taskService.getTaskById(taskId);
     }
 
     @GetMapping("/getTaskByHolderName")
@@ -32,8 +31,8 @@ public class TaskController {
     }
 
     @GetMapping("/changeStatus")
-    public Task changeTaskStatus(@RequestParam Long id, @RequestParam String newStatus) {
-        return taskService.changeTaskStatus(id, newStatus);
+    public Task changeTaskStatus(@RequestParam Long id, @RequestParam String taskStatus) {
+        return taskService.changeTaskStatus(id, taskStatus);
     }
 
     @GetMapping("/deleteTask")
