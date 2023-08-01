@@ -12,25 +12,29 @@ import java.util.*;
 public class ControllerClass {
     @Autowired
     ServiceClass service;
+
     @GetMapping("/alltasks")
-    public List<ModelTask> getAllTasks()
-    {
-        return service.findAllTask();
+    public List<ModelTask> getAllTasks() {
+        List<ModelTask> tasks = service.findAllTask();
+        for (ModelTask task : tasks) {
+            task.setHouseNo(String.valueOf(task.getTaskId())); // Set the taskId as houseNo
+            // Assuming taskHolderName is already set or retrieved from the database
+        }
+        return tasks;
     }
+
     @PostMapping("/saveTask")
-    public ModelTask addTask(@RequestBody ModelTask mt)
-    {
+    public ModelTask addTask(@RequestBody ModelTask mt) {
         return service.addTask(mt);
     }
+
     @GetMapping("/deleteTask")
-    public void deleteTask(@RequestParam String taskId)
-    {
-        
-    service.deleteTask(Integer.valueOf(taskId));
+    public void deleteTask(@RequestParam String taskId) {
+        service.deleteTask(Integer.valueOf(taskId));
     }
+
     @GetMapping("/getTask")
-    public Optional<ModelTask> getbyId(@RequestParam String taskId)
-    {
+    public Optional<ModelTask> getbyId(@RequestParam String taskId) {
         return service.getTaskById(Integer.valueOf(taskId));
-    } 
+    }
 }

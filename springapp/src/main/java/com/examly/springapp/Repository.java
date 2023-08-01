@@ -6,3 +6,4 @@ import org.springframework.stereotype.Repository;
 interface Respository extends JpaRepository<ModelTask,Integer> {
     
 }
+
