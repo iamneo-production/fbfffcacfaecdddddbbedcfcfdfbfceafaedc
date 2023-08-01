@@ -21,8 +21,13 @@ public class TaskController {
     }
 
     @GetMapping("/getTask")
-    public Optional<Task> getTaskById(@RequestParam Long taskId) {
-        return taskService.getTaskById(taskId);
+    public ResponseEntity<Task> getTaskById(@RequestParam Long taskId) {
+        Optional<Task> task = taskService.getTaskById(taskId);
+        if (task.isPresent()) {
+            return ResponseEntity.ok(task.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/getTaskByHolderName")
@@ -31,12 +36,24 @@ public class TaskController {
     }
 
     @GetMapping("/changeStatus")
-    public Task changeTaskStatus(@RequestParam Long id, @RequestParam String taskStatus) {
-        return taskService.changeTaskStatus(id, taskStatus);
+    public ResponseEntity<Task> changeTaskStatus(@RequestParam Long id, @RequestParam String taskStatus) {
+        Task task = taskService.changeTaskStatus(id, taskStatus);
+        if (task != null) {
+            return ResponseEntity.ok(task);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/deleteTask")
-    public void deleteTask(@RequestParam Long id) {
-        taskService.deleteTaskById(id);
+    public ResponseEntity<Void> deleteTask(@RequestParam Long id) {
+        Optional<Task> task = taskService.getTaskById(id);
+        if (task.isPresent()) {
+            taskService.deleteTaskById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
+
