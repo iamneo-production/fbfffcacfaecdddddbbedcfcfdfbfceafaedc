@@ -1,12 +1,13 @@
 package com.examly.springapp;
-
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class ModelTask {
     @Id
-    private int taskId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long taskId;
     private String taskHolderName;
     private String taskDate;
     private String taskName;

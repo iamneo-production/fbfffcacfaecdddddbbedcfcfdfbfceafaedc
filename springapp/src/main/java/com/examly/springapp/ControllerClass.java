@@ -32,4 +32,13 @@ public class ControllerClass {
     public Optional<ModelTask> getbyId(@RequestParam String taskId) {
         return service.getTaskById(Integer.valueOf(taskId));
     }
+    @GetMapping("/getTaskByHolderName")
+    public List<Task> getTasksByHolderName(@RequestParam String taskHolderName) {
+        return service.getTasksByHolderName(taskHolderName);
+    }
+
+    @GetMapping("/changeStatus")
+    public Task changeTaskStatus(@RequestParam Long id, @RequestParam String newStatus) {
+        return service.changeTaskStatus(id, newStatus);
+    }
 }
