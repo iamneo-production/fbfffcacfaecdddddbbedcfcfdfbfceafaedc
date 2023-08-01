@@ -17,8 +17,7 @@ public class ControllerClass {
     public List<ModelTask> getAllTasks() {
         List<ModelTask> tasks = service.findAllTask();
         for (ModelTask task : tasks) {
-            task.setHouseNo(String.valueOf(task.getTaskId())); // Set the taskId as houseNo
-            // Assuming taskHolderName is already set or retrieved from the database
+            task.setHouseNo(String.valueOf(task.getTaskId())); 
         }
         return tasks;
     }

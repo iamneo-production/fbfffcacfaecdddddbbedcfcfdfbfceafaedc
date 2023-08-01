@@ -8,7 +8,7 @@ public class ModelTask {
     @Id
     int taskId;
     String houseNo;
-    String taskHolderName; // Add this field
+    String taskHolderName;
     String taskDate;
     String taskName;
     String taskStatus;
