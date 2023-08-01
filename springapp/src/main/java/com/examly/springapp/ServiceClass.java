@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 public class ServiceClass {
     @Autowired
-    TasRepository rep;
+    TasksRepository rep;
 
     public ModelTask addTask(ModelTask mv) {
         rep.save(mv);
